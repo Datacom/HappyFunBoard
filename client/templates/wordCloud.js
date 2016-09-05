@@ -10,9 +10,12 @@ const force = d3.layout.force()
   .nodes(nodes)
   .size([400, 400])
   .gravity(0)
-  .charge(-300)
+  .charge(-600)
   .on("tick", tick)
   
+
+
+
 
 dragend = function (d) {
   if ((d.y > height || d.y < 0) || (d.x > width || d.x < 0)){
@@ -72,16 +75,30 @@ Template.wordCloud.helpers({
 
 Template.wordCloud.onRendered(setSize)
 Template.wordCloud.onRendered(makeCloud)
+Template.wordCloud.onRendered(startResizeListener)
 Template.wordCloud.onDestroyed(removeCloud)
 
 function setSize(){
-  width = d3.select(".wordcloud").node().getBoundingClientRect().width
-  force.size([500,width])
+  boundingRect = d3.select(".wordcloud").node().getBoundingClientRect()
+  width = boundingRect.width
+  height = 0.8*(document.documentElement.clientHeight - boundingRect.top )
+  d3.select("#wordCloud").attr("height",height)
+
+  force.size([height,width])
 
   foci = {
-    true:  {x:width*.75,y:250},
-    false: {x:width*.25,y:250}
+    true:  {x:width*.75,y:height/2},
+    false: {x:width*.25,y:height/2}
   }
+
+}
+
+function startResizeListener(){
+$(window).on('resize orientationChange', function(event) {
+    force.stop()
+    setSize()
+    force.start()
+  });
 }
 
 function makeCloud(){

@@ -51,6 +51,8 @@ body {
 }
 
 .wordcloud {
+  /*width:100%;*/
+  /*height:500px;*/
   background: -webkit-linear-gradient(left, #fdd , white, #dfd); 
   background: -o-linear-gradient(right,  #fdd , white, #dfd); 
   background: -moz-linear-gradient(right, #fdd , white, #dfd);
