@@ -1,0 +1,32 @@
+<template name="lists">
+  <div id = lists> 
+    {{> sadList}}
+    {{> happyList}}
+  </div>
+</template>
+
+<template name="sadList">
+  <div id='sadList' class='col-sm-6'>
+    {{#each items}}
+      {{> item}}
+    {{/each}}
+    <form class="new-item">
+      <input type="text" name="text" placeholder="what makes you sad?" />
+    </form>
+  </div>
+</template>
+
+<template name="happyList">
+  <div id='happyList' class='col-sm-6'>
+    {{#each items}}
+      {{> item}}
+    {{/each}}
+    <form class="new-item">
+      <input type="text" name="text" placeholder="what makes you happy?" />
+    </form>
+  </div>
+</template>
+
+<template name="item" >
+  <div><i class="fa fa-check-circle" aria-hidden="true"></i> {{text}} ({{votes}}) <i class="fa fa-times" aria-hidden="true"></i> </div>
+</template> 

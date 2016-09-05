@@ -1,0 +1,50 @@
+<head>
+  <title>happyboard</title>
+</head>
+
+<body>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-sm-12'>
+        <h1>Happy Fun Board</h1>
+        <h3>do not taunt happy fun board</h3>
+      </div>
+    </div>
+    {{> mainPage}}
+  </div>
+</body>
+
+<template name="mainPage">
+    <div class='row'>
+      <div class='col-sm-12'>
+        <span id='showLists'>show me the lists</span>
+        <span> || </span>
+        <span id='showCloud'>show me the Cloud</span>
+      </div>
+    </div>
+    {{#if showLists}}
+      <div class='row'>
+          {{> happyChart}}
+      </div>
+      <div class='row'>
+        {{> lists}}
+      </div>
+    {{else}}
+      <div class='row'>
+        {{> wordCloud}}
+        {{> cloudInputs}}
+      </div>
+    {{/if}}
+</template>
+
+<template name="happyChart">
+  <div class='the_chart' width=100>
+    <div class='the_gradiant' style="
+      background: -webkit-linear-gradient(left, red , white {{sadHappyIndicator}}% , green);
+      background: -o-linear-gradient(right, red, white {{sadHappyIndicator}}% , green); 
+      background: -moz-linear-gradient(right, red, white {{sadHappyIndicator}}% , green);
+      background: linear-gradient(to right, red , white {{sadHappyIndicator}}% , green);
+    "></div>
+    <!-- <div class='the_marker' style="left:{{happySadIndicator}}%"></div> -->
+  </div>
+</template>
