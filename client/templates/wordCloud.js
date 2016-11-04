@@ -94,7 +94,7 @@ function setSize(){
 }
 
 function startResizeListener(){
-$(window).on('resize orientationChange', function(event) {
+  $(window).on('resize orientationChange', function(event) {
     force.stop()
     setSize()
     force.start()
